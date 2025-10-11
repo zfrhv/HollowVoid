@@ -3,15 +3,15 @@
 	"id": "hollowvoid",
 	"version": "${version}",
 	"name": "HollowVoid",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Mod that adds void dimension",
 	"authors": [
-		"Me!"
+		"zfrhv"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/zfrhv/HollowVoid",
+		"sources": "https://github.com/zfrhv/HollowVoid"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/hollowvoid/icon.png",
 	"environment": "*",
 	"entrypoints": {
@@ -20,8 +20,11 @@
 		],
 		"fabric-datagen": [
 			"zfrhv.hollowvoid.HollowVoidDataGenerator"
-		]
-	},
+		],
+      "client": [
+        "zfrhv.hollowvoid.HollowVoidClient"
+      ]
+    },
 	"mixins": [
 		"hollowvoid.mixins.json"
 	],
