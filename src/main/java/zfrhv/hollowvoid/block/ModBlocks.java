@@ -21,6 +21,12 @@ public class ModBlocks {
             AbstractBlock.Settings.create().strength(2f).sounds(BlockSoundGroup.GRAVEL),
             true
     );
+    public static final Block VOID_DEEPSLATE = register(
+            "void_deepslate",
+            Block::new,
+            AbstractBlock.Settings.create().strength(3f).sounds(BlockSoundGroup.DEEPSLATE),
+            true
+    );
 
     private static Block register(String name, Function<AbstractBlock.Settings, Block> blockFactory, AbstractBlock.Settings settings, boolean shouldRegisterItem) {
         // Create a registry key for the block

@@ -17,6 +17,7 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.hollowvoid.void_items"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModItems.VOID_STICK);
+                        entries.add(ModItems.SHADE_CLOAK);
                     })
                     .build());
     public static final ItemGroup VOID_BLOCKS_GROUP = Registry.register(Registries.ITEM_GROUP,
@@ -25,6 +26,7 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.hollowvoid.void_blocks"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.VOID_SOIL);
+                        entries.add(ModBlocks.VOID_DEEPSLATE);
                     })
                     .build());
 

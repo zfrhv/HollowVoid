@@ -16,12 +16,14 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VOID_SOIL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VOID_DEEPSLATE);
     }
 
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.VOID_STICK, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SHADE_CLOAK, Models.GENERATED);
     }
 
     @Override

@@ -15,5 +15,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
         addDrop(ModBlocks.VOID_SOIL);
+        addDrop(ModBlocks.VOID_DEEPSLATE);
     }
 }

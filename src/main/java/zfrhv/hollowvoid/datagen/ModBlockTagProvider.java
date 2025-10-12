@@ -17,5 +17,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.VOID_SOIL);
+        valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(ModBlocks.VOID_DEEPSLATE);
     }
 }

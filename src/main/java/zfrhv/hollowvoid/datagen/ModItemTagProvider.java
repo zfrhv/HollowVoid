@@ -21,7 +21,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        valueLookupBuilder(SMELLY_ITEMS)
-                .add(ModItems.VOID_STICK);
+        valueLookupBuilder(SMELLY_ITEMS).add(ModItems.VOID_STICK);
     }
 }

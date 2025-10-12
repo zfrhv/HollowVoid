@@ -2,14 +2,14 @@
   "type": "hollowvoid:voiddim_type",
   "generator": {
     "type": "minecraft:noise",
-    "settings": "minecraft:overworld",
+    "settings": "hollowvoid:void_noise_settings",
     "biome_source": {
       "type": "minecraft:multi_noise",
       "biomes": [
         {
           "biome": "hollowvoid:simple_void_biome",
           "parameters": {
-            "temperature": 0.1,
+            "temperature": 0.2,
             "humidity": 0,
             "continentalness": 0,
             "erosion": 0,
@@ -21,7 +21,7 @@
         {
           "biome": "minecraft:plains",
           "parameters": {
-            "temperature": 0.2,
+            "temperature": 0.15,
             "humidity": 0,
             "continentalness": 0,
             "erosion": 0,
