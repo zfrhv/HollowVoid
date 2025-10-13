@@ -1,0 +1,28 @@
+{
+  "criteria": {
+    "code_check": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hollowvoid:gui/advancements/backgrounds/void_deepslate",
+    "description": {
+      "translate": "advancements.void.root.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "hollowvoid:void_soil"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.void.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "code_check"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

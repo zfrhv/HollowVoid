@@ -9,13 +9,12 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
+import zfrhv.hollowvoid.world.ModDimension;
 
 public class ModBedSleeping {
-    public static final RegistryKey<World> VOIDDIM = RegistryKey.of(RegistryKeys.WORLD, Identifier.of("hollowvoid", "voiddim"));
-
     public static void register() {
         UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
-            if (!world.isClient() && world.getRegistryKey() == VOIDDIM && world.getBlockState(hitResult.getBlockPos()).isIn(BlockTags.BEDS)) {
+            if (!world.isClient() && world.getRegistryKey() == ModDimension.VOIDDIM && world.getBlockState(hitResult.getBlockPos()).isIn(BlockTags.BEDS)) {
                 player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, 5));
             }
             return ActionResult.PASS;

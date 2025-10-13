@@ -6,5 +6,8 @@
   "block.hollowvoid.void_deepslate": "Void Deepslate",
 
   "itemgroup.hollowvoid.void_items": "Void Items",
-  "itemgroup.hollowvoid.void_blocks": "Void Blocks"
+  "itemgroup.hollowvoid.void_blocks": "Void Blocks",
+
+  "advancements.void.root.title": "What am I?",
+  "advancements.void.root.description": "Enter the void dimension and get infected"
 }

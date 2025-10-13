@@ -23,8 +23,8 @@
       "type": "minecraft:add",
       "argument1": {
         "type": "minecraft:y_clamped_gradient",
-        "from_y": 50,
-        "to_y": 80,
+        "from_y": 20,
+        "to_y": 50,
         "from_value": 1,
         "to_value": -1
       },
@@ -55,12 +55,36 @@
     "vein_toggle": 0.0
   },
   "ore_veins_enabled": false,
-  "sea_level": 60,
+  "sea_level": 28,
   "spawn_target": [],
   "surface_rule": {
-    "type": "minecraft:block",
-    "result_state": {
-      "Name": "hollowvoid:void_soil"
-    }
+    "type": "minecraft:sequence",
+    "sequence": [
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:vertical_gradient",
+          "false_at_and_above": {
+            "above_bottom": 5
+          },
+          "random_name": "minecraft:bedrock_floor",
+          "true_at_and_below": {
+            "above_bottom": 0
+          }
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "minecraft:bedrock"
+          }
+        }
+      },
+      {
+        "type": "minecraft:block",
+        "result_state": {
+          "Name": "hollowvoid:void_soil"
+        }
+      }
+    ]
   }
 }

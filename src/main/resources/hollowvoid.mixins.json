@@ -3,8 +3,7 @@
 	"package": "zfrhv.hollowvoid.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin",
-        "InGameHudMixin"
+        "SleepingChatScreenMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
