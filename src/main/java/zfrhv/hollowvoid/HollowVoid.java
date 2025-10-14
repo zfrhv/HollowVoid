@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import zfrhv.hollowvoid.block.ModBedSleeping;
 import zfrhv.hollowvoid.block.ModBlocks;
+import zfrhv.hollowvoid.effects.ModEffects;
 import zfrhv.hollowvoid.item.ModItems;
 import zfrhv.hollowvoid.item.ModShadeCloak;
 import zfrhv.hollowvoid.world.ModDimension;
@@ -32,5 +33,7 @@ public class HollowVoid implements ModInitializer {
         ModBedSleeping.register();
 
         ModDimension.initialize();
+
+        ModEffects.register();
     }
 }

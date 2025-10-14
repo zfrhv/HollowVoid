@@ -9,5 +9,8 @@
   "itemgroup.hollowvoid.void_blocks": "Void Blocks",
 
   "advancements.void.root.title": "What am I?",
-  "advancements.void.root.description": "Enter the void dimension and get infected"
+  "advancements.void.root.description": "Enter the void dimension and get infected",
+
+  "effect.hollowvoid.reduce_hearts": "Reduce health",
+  "effect.hollowvoid.increase_hearts": "Increase health"
 }

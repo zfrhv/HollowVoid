@@ -5,6 +5,8 @@ import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.advancement.AdvancementProgress;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -12,6 +14,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
+import zfrhv.hollowvoid.effects.ModEffects;
 
 import java.io.Console;
 
@@ -29,8 +32,15 @@ public class ModDimension {
                 // If they have not completed the advancement yet, give the effect
                 if (!progress.isDone()) {
                     player.getAdvancementTracker().grantCriterion(entered_void_advancement, "code_check");
-                    // TODO add effects to reduce hearts, similar to affects when gaining new hearts
-                    player.getAttributeInstance(EntityAttributes.MAX_HEALTH).setBaseValue(10.0);
+
+                    player.getAttributeInstance(EntityAttributes.MAX_HEALTH).setBaseValue(10);
+                    player.addStatusEffect(new StatusEffectInstance(
+                            StatusEffects.DARKNESS, 20*7, 1, false, true, false
+                    ));
+                    player.addStatusEffect(new StatusEffectInstance(
+                            ModEffects.REDUCE_HEARTS, 20*5, 0, false, true, false
+                    ));
+                    // TODO add decaying hearts sound effects
                 }
             }
         });
