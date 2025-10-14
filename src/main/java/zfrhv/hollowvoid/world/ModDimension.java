@@ -1,22 +1,16 @@
 package zfrhv.hollowvoid.world;
 
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
-import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.advancement.AdvancementProgress;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import zfrhv.hollowvoid.effects.ModEffects;
-
-import java.io.Console;
 
 public class ModDimension {
     public static final RegistryKey<World> VOIDDIM = RegistryKey.of(RegistryKeys.WORLD, Identifier.of("hollowvoid", "voiddim"));
