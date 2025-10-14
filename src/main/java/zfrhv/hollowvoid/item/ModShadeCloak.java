@@ -2,6 +2,7 @@ package zfrhv.hollowvoid.item;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -19,7 +20,7 @@ public class ModShadeCloak {
     public static void register() {
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
-                if (player.isSprinting()) {
+                if (player.isSprinting() && player.getEquippedStack(EquipmentSlot.CHEST).getItem() == ModItems.SHADE_CLOAK) {
                     // Only add modifier if not already applied
                     if (!player.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED)
                             .hasModifier(SPRINT_SPEED_MODIFIER)) {
@@ -42,9 +43,11 @@ public class ModShadeCloak {
                         player.addStatusEffect(new StatusEffectInstance(
                                 StatusEffects.STRENGTH, Integer.MAX_VALUE, 1, false, false, false
                         ));
+                        // TODO add sprinting sounds (from server side) and around screen focuz effect
                     }
-                } else if (!player.getPlayerInput().forward() && player.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED)
-                        .hasModifier(SPRINT_SPEED_MODIFIER)) {
+                } else if ((!player.getPlayerInput().forward() && player.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).hasModifier(SPRINT_SPEED_MODIFIER)) ||
+                        !(player.getEquippedStack(EquipmentSlot.CHEST).getItem() == ModItems.SHADE_CLOAK)) {
+                    // if player is not running anymore, or if not equipped the cape then remove the effects
                     // player.isSprinting() breaks after hitting enemy while running. so i also check for player.getPlayerInput().forward()
 
                     player.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED)
