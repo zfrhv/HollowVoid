@@ -14,6 +14,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 //    public static final TagKey<Item> SMELLY_ITEMS = TagKey.of(RegistryKeys.ITEM, Identifier.of(HollowVoid.MOD_ID, "smelly_items"));
+    public static final TagKey<Item> SWORDS = TagKey.of(RegistryKeys.ITEM, Identifier.of("minecraft", "swords"));
+
 
     public ModItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
@@ -22,5 +24,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
 //        valueLookupBuilder(SMELLY_ITEMS).add(ModItems.VOID_STICK);
+        valueLookupBuilder(SWORDS).add(ModItems.VOID_SCYTHE_1);
+        valueLookupBuilder(SWORDS).add(ModItems.VOID_SCYTHE_2);
+        valueLookupBuilder(SWORDS).add(ModItems.VOID_SCYTHE_3);
     }
 }

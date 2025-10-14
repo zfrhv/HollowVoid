@@ -24,6 +24,9 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.VOID_STICK, Models.GENERATED);
         itemModelGenerator.register(ModItems.SHADE_CLOAK, Models.GENERATED);
+        itemModelGenerator.register(ModItems.VOID_SCYTHE_1, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.VOID_SCYTHE_2, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.VOID_SCYTHE_3, Models.HANDHELD);
     }
 
     @Override

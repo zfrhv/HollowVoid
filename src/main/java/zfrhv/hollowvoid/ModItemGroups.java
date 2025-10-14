@@ -18,6 +18,9 @@ public class ModItemGroups {
                     .entries((displayContext, entries) -> {
                         entries.add(ModItems.VOID_STICK);
                         entries.add(ModItems.SHADE_CLOAK);
+                        entries.add(ModItems.VOID_SCYTHE_1);
+                        entries.add(ModItems.VOID_SCYTHE_2);
+                        entries.add(ModItems.VOID_SCYTHE_3);
                     })
                     .build());
     public static final ItemGroup VOID_BLOCKS_GROUP = Registry.register(Registries.ITEM_GROUP,
