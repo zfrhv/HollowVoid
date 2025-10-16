@@ -30,6 +30,7 @@ public class ModItemGroups {
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.VOID_SOIL);
                         entries.add(ModBlocks.VOID_DEEPSLATE);
+                        entries.add(ModBlocks.SKULLS_BLOCK);
                     })
                     .build());
 

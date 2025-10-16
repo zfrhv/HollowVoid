@@ -3,7 +3,8 @@
 	"package": "zfrhv.hollowvoid.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-        "SleepingChatScreenMixin"
+        "SleepingChatScreenMixin",
+        "VoidstormWeather"
 	],
 	"injectors": {
 		"defaultRequire": 1

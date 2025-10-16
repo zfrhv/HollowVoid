@@ -9,6 +9,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.GameMode;
 import zfrhv.hollowvoid.effects.ModEffects;
 
 @Environment(EnvType.CLIENT)
@@ -26,6 +27,7 @@ public class DecayingHeartsRenderer implements HudElement {
     public void render(DrawContext context, RenderTickCounter tickCounter) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
+        if (client.player.getGameMode() != GameMode.SURVIVAL) return;
 
         StatusEffectInstance reduceHeartsEffect = client.player.getStatusEffect(ModEffects.REDUCE_HEARTS);
 

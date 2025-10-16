@@ -27,6 +27,12 @@ public class ModBlocks {
             AbstractBlock.Settings.create().strength(3f).sounds(BlockSoundGroup.DEEPSLATE),
             true
     );
+    public static final Block SKULLS_BLOCK = register(
+            "skulls_block",
+            Block::new,
+            AbstractBlock.Settings.create().strength(3f).sounds(BlockSoundGroup.BONE),
+            true
+    );
 
     private static Block register(String name, Function<AbstractBlock.Settings, Block> blockFactory, AbstractBlock.Settings settings, boolean shouldRegisterItem) {
         // Create a registry key for the block

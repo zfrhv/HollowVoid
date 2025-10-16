@@ -32,7 +32,7 @@ public class VoidFoxEntity extends MobEntity {
 
     public static DefaultAttributeContainer.Builder createAttributes() {
         return MobEntity.createMobAttributes()
-                .add(EntityAttributes.MAX_HEALTH, 20.0)
+                .add(EntityAttributes.MAX_HEALTH, 50.0)
                 .add(EntityAttributes.MOVEMENT_SPEED, 1)
                 .add(EntityAttributes.ATTACK_DAMAGE, 4.0);
     }
