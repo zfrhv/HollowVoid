@@ -1,12 +1,13 @@
-package zfrhv.hollowvoid.entity.client;
+package zfrhv.hollowvoid.entity.void_fox;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.render.entity.state.BatEntityRenderState;
-import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.util.Identifier;
 import zfrhv.hollowvoid.HollowVoid;
 
+@Environment(EnvType.CLIENT)
 public class VoidFoxRenderer extends MobEntityRenderer<VoidFoxEntity, VoidFoxEntityRenderState, VoidFoxModel> {
     private static final Identifier TEXTURE = Identifier.of(HollowVoid.MOD_ID, "textures/entity/void_fox.png");
 

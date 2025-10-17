@@ -8,8 +8,10 @@ import net.minecraft.util.Identifier;
 import zfrhv.hollowvoid.client.render.DecayingHeartsRenderer;
 import zfrhv.hollowvoid.client.render.FormingHeartsRenderer;
 import zfrhv.hollowvoid.entity.ModEntities;
-import zfrhv.hollowvoid.entity.client.VoidFoxModel;
-import zfrhv.hollowvoid.entity.client.VoidFoxRenderer;
+import zfrhv.hollowvoid.entity.scythe.ScytheModel;
+import zfrhv.hollowvoid.entity.scythe.ScytheRenderer;
+import zfrhv.hollowvoid.entity.void_fox.VoidFoxModel;
+import zfrhv.hollowvoid.entity.void_fox.VoidFoxRenderer;
 
 public class HollowVoidClient implements ClientModInitializer {
     @Override
@@ -19,5 +21,8 @@ public class HollowVoidClient implements ClientModInitializer {
 
         EntityModelLayerRegistry.registerModelLayer(VoidFoxModel.VOID_FOX_LAYER, VoidFoxModel::getTexturedModelData);
         EntityRendererRegistry.register(ModEntities.VOID_FOX, VoidFoxRenderer::new);
+
+        EntityModelLayerRegistry.registerModelLayer(ScytheModel.SCYTHE_LAYER, ScytheModel::getTexturedModelData);
+        EntityRendererRegistry.register(ModEntities.SCYTHE, ScytheRenderer::new);
     }
 }

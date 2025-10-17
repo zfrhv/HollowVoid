@@ -2,14 +2,12 @@ package zfrhv.hollowvoid;
 
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import zfrhv.hollowvoid.block.ModBedSleeping;
 import zfrhv.hollowvoid.block.ModBlocks;
 import zfrhv.hollowvoid.effects.ModEffects;
 import zfrhv.hollowvoid.entity.ModEntities;
-import zfrhv.hollowvoid.entity.client.VoidFoxEntity;
 import zfrhv.hollowvoid.item.ModItems;
 import zfrhv.hollowvoid.item.ShadeCloak;
 import zfrhv.hollowvoid.world.ModDimension;

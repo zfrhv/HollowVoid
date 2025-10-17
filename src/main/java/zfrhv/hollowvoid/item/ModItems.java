@@ -14,7 +14,7 @@ import java.util.function.Function;
 public class ModItems {
     public static final ToolMaterial VOID_TOOL_MATERIAL = new ToolMaterial(
             BlockTags.INCORRECT_FOR_WOODEN_TOOL,
-            1,
+            100,
             5.0F,
             1.5F,
             1,
@@ -31,17 +31,17 @@ public class ModItems {
     );
     public static final Item VOID_SCYTHE_1 = register(
             "void_scythe_1",
-            Item::new,
+            ScytheItem::new,
             new Item.Settings().sword(VOID_TOOL_MATERIAL, 6f, -3f)
     );
     public static final Item VOID_SCYTHE_2 = register(
             "void_scythe_2",
-            Item::new,
+            ScytheItem::new,
             new Item.Settings().sword(VOID_TOOL_MATERIAL, 8f, -2.8f)
     );
     public static final Item VOID_SCYTHE_3 = register(
             "void_scythe_3",
-            Item::new,
+            ScytheItem::new,
             new Item.Settings().sword(VOID_TOOL_MATERIAL, 10f, -2.6f)
     );
 

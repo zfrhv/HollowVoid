@@ -1,10 +1,13 @@
-package zfrhv.hollowvoid.entity.client;
+package zfrhv.hollowvoid.entity.void_fox;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.animation.AnimationDefinition;
 import net.minecraft.client.render.entity.animation.AnimationHelper;
 import net.minecraft.client.render.entity.animation.Keyframe;
 import net.minecraft.client.render.entity.animation.Transformation;
 
+@Environment(EnvType.CLIENT)
 public class VoidFoxAnimations {
     public static final AnimationDefinition IDLE = AnimationDefinition.Builder.create(2f).looping()
             .addBoneAnimation("tail",

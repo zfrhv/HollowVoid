@@ -1,4 +1,4 @@
-package zfrhv.hollowvoid.entity.client;
+package zfrhv.hollowvoid.entity.void_fox;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -6,7 +6,6 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.animation.Animation;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.util.math.MathHelper;
 import zfrhv.hollowvoid.entity.ModEntities;
 
 @Environment(EnvType.CLIENT)

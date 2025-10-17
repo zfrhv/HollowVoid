@@ -9,7 +9,8 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import zfrhv.hollowvoid.HollowVoid;
-import zfrhv.hollowvoid.entity.client.VoidFoxEntity;
+import zfrhv.hollowvoid.entity.scythe.ScytheEntity;
+import zfrhv.hollowvoid.entity.void_fox.VoidFoxEntity;
 
 public class ModEntities {
     public static final Identifier VOID_FOX_ID = Identifier.of(HollowVoid.MOD_ID, "void_fox");
@@ -19,6 +20,13 @@ public class ModEntities {
             EntityType.Builder.create(VoidFoxEntity::new, SpawnGroup.CREATURE)
                     .dimensions(0.5f, 1.99f).build(RegistryKey.of(RegistryKeys.ENTITY_TYPE, VOID_FOX_ID)));
 
+    public static final Identifier SCYTHE_ID = Identifier.of(HollowVoid.MOD_ID, "scythe");
+    public static final EntityType<ScytheEntity> SCYTHE = Registry.register(
+            Registries.ENTITY_TYPE,
+            SCYTHE_ID,
+            EntityType.Builder.<ScytheEntity>create(ScytheEntity::new, SpawnGroup.MISC)
+                    .dimensions(0.5f, 1.15f).build(RegistryKey.of(RegistryKeys.ENTITY_TYPE, SCYTHE_ID))
+            );
 
     public static void register() {
         FabricDefaultAttributeRegistry.register(ModEntities.VOID_FOX, VoidFoxEntity.createAttributes());

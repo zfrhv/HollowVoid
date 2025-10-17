@@ -1,4 +1,4 @@
-package zfrhv.hollowvoid.entity.client;
+package zfrhv.hollowvoid.entity.void_fox;
 
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
