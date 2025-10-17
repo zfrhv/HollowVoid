@@ -8,7 +8,8 @@
         "sweep_attack/PlayerEntityMixin",
         "SleepingChatScreenMixin",
         "weather/WeatherRenderStateMixin",
-        "weather/VoidstormWeatherMixin"
+        "weather/VoidstormWeatherMixin",
+        "ItemSettingsMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

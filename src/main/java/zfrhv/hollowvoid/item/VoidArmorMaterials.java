@@ -27,7 +27,7 @@ public class VoidArmorMaterials {
                     EquipmentType.LEGGINGS, 0,
                     EquipmentType.BOOTS, 0
             ),
-            1, // enchantability
+            0, // enchantability
             SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, // equip sound
             0.0F, // toughness
             0.0F, // knockback resistance

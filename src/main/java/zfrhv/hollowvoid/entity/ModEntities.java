@@ -25,7 +25,7 @@ public class ModEntities {
             Registries.ENTITY_TYPE,
             SCYTHE_ID,
             EntityType.Builder.<ScytheEntity>create(ScytheEntity::new, SpawnGroup.MISC)
-                    .dimensions(0.5f, 1.15f).build(RegistryKey.of(RegistryKeys.ENTITY_TYPE, SCYTHE_ID))
+                    .dimensions(1f, 0.2f).build(RegistryKey.of(RegistryKeys.ENTITY_TYPE, SCYTHE_ID))
             );
 
     public static void register() {

@@ -7,23 +7,17 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.command.OrderedRenderCommandQueue;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.state.ProjectileEntityRenderState;
-import net.minecraft.client.render.entity.state.TntEntityRenderState;
-import net.minecraft.client.render.entity.state.TridentEntityRenderState;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.state.CameraRenderState;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.TntEntity;
-import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Unit;
 import net.minecraft.util.math.RotationAxis;
 import zfrhv.hollowvoid.HollowVoid;
 
 import java.util.List;
 
 @Environment(EnvType.CLIENT)
-public class ScytheRenderer extends EntityRenderer<ScytheEntity, ProjectileEntityRenderState> {
+public class ScytheRenderer extends EntityRenderer<ScytheEntity, ScytheRenderState> {
     private static final Identifier TEXTURE = Identifier.of(HollowVoid.MOD_ID, "textures/entity/scythe_model.png");
     protected ScytheModel model;
 
@@ -32,43 +26,47 @@ public class ScytheRenderer extends EntityRenderer<ScytheEntity, ProjectileEntit
         this.model = new ScytheModel(context.getPart(ScytheModel.SCYTHE_LAYER));
     }
 
-    public Identifier getTexture(ProjectileEntityRenderState state) {
+    public Identifier getTexture(ScytheRenderState state) {
         return TEXTURE;
     }
 
     @Override
-    public ProjectileEntityRenderState createRenderState() {
-        return new ProjectileEntityRenderState();
+    public ScytheRenderState createRenderState() {
+        return new ScytheRenderState();
     }
 
-    public void updateRenderState(ScytheEntity scytheEntity, ProjectileEntityRenderState projectileEntityRenderState, float f) {
-        super.updateRenderState(scytheEntity, projectileEntityRenderState, f);
-        // TODO add variables to render state
+    public void updateRenderState(ScytheEntity scytheEntity, ScytheRenderState scytheRenderState, float f) {
+        super.updateRenderState(scytheEntity, scytheRenderState, f);
+        scytheRenderState.yaw = scytheEntity.getLerpedYaw(f);
+        scytheRenderState.pitch = scytheEntity.getLerpedPitch(f);
+        scytheRenderState.rotation = scytheEntity.getRenderingRotation();
+        scytheRenderState.enchanted = scytheEntity.isEnchanted();
+        scytheRenderState.isGrounded = scytheEntity.isOnGround();
     }
 
     public void render(
-            ProjectileEntityRenderState projectileEntityRenderState,
+            ScytheRenderState scytheRenderState,
             MatrixStack matrixStack,
             OrderedRenderCommandQueue orderedRenderCommandQueue,
             CameraRenderState cameraRenderState
     ) {
         matrixStack.push();
-        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(projectileEntityRenderState.yaw - 90.0F));
-        matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(projectileEntityRenderState.pitch + 90.0F));
-        List<RenderLayer> list = ItemRenderer.getGlintRenderLayers(this.model.getLayer(TEXTURE), false, true);
+        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(scytheRenderState.yaw - 90.0F));
+        matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(scytheRenderState.pitch + 90.0F));
+        List<RenderLayer> list = ItemRenderer.getGlintRenderLayers(this.model.getLayer(TEXTURE), false, scytheRenderState.enchanted);
 
         for (int i = 0; i < list.size(); i++) {
             orderedRenderCommandQueue.getBatchingQueue(i)
                     .submitModel(
                             this.model,
-                            projectileEntityRenderState,
+                            scytheRenderState,
                             matrixStack,
                             (RenderLayer)list.get(i),
-                            projectileEntityRenderState.light,
+                            scytheRenderState.light,
                             OverlayTexture.DEFAULT_UV,
                             -1,
                             null,
-                            projectileEntityRenderState.outlineColor,
+                            scytheRenderState.outlineColor,
                             null
                     );
         }
@@ -76,6 +74,6 @@ public class ScytheRenderer extends EntityRenderer<ScytheEntity, ProjectileEntit
         // TODO add spin while flying + correction when ladded, pass entity infro through render state (need custom render state) video time 17:50
 
         matrixStack.pop();
-        super.render(projectileEntityRenderState, matrixStack, orderedRenderCommandQueue, cameraRenderState);
+        super.render(scytheRenderState, matrixStack, orderedRenderCommandQueue, cameraRenderState);
     }
 }

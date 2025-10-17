@@ -5,11 +5,10 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.client.render.entity.state.ProjectileEntityRenderState;
 import zfrhv.hollowvoid.entity.ModEntities;
 
 @Environment(EnvType.CLIENT)
-public class ScytheModel extends EntityModel<ProjectileEntityRenderState> {
+public class ScytheModel extends EntityModel<ScytheRenderState> {
     public static final EntityModelLayer SCYTHE_LAYER = new EntityModelLayer(ModEntities.SCYTHE_ID, "main");
 
     private final ModelPart blade;
@@ -40,7 +39,7 @@ public class ScytheModel extends EntityModel<ProjectileEntityRenderState> {
         return TexturedModelData.of(modelData, 32, 32);
     }
     @Override
-    public void setAngles(ProjectileEntityRenderState projectileEntityRenderState) {
+    public void setAngles(ScytheRenderState scytheRenderState) {
 
     }
 }

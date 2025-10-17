@@ -17,7 +17,7 @@ public class ModItems {
             100,
             5.0F,
             1.5F,
-            1,
+            0,
             VoidArmorMaterials.REPAIRS_VOID_ARMOR_TAG
     );
 
