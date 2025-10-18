@@ -229,4 +229,9 @@ public class ScytheEntity extends PersistentProjectileEntity {
     public boolean shouldRender(double cameraX, double cameraY, double cameraZ) {
         return true;
     }
+
+    @Override
+    public boolean isInGround() {
+        return super.isInGround();
+    }
 }

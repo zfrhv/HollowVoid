@@ -23,19 +23,19 @@ public class ScytheModel extends EntityModel<ScytheRenderState> {
     public static TexturedModelData getTexturedModelData() {
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
-        ModelPartData blade = modelPartData.addChild("blade", ModelPartBuilder.create().uv(0, 18).cuboid(0.0F, -3.0F, -10.0F, 1.0F, 2.0F, 12.0F, new Dilation(0.0F))
-                .uv(12, 0).cuboid(0.0F, -4.0F, -7.0F, 1.0F, 1.0F, 5.0F, new Dilation(0.0F))
-                .uv(17, 7).cuboid(0.0F, -2.0F, -12.0F, 1.0F, 2.0F, 2.0F, new Dilation(0.0F))
-                .uv(1, 1).cuboid(0.0F, -1.0F, -10.0F, 1.0F, 1.0F, 1.0F, new Dilation(0.0F))
-                .uv(1, 1).cuboid(0.0F, -1.0F, -13.0F, 1.0F, 2.0F, 1.0F, new Dilation(0.0F))
-                .uv(0, 0).cuboid(0.0F, -1.0F, -3.0F, 1.0F, 1.0F, 6.0F, new Dilation(0.0F))
-                .uv(0, 0).cuboid(0.0F, -2.0F, 2.0F, 1.0F, 1.0F, 2.0F, new Dilation(0.0F)), ModelTransform.origin(-1.0F, 2.0F, 3.0F));
+        ModelPartData blade = modelPartData.addChild("blade", ModelPartBuilder.create().uv(0, 18).cuboid(0.0F, -8.0F, -6.0F, 1.0F, 2.0F, 12.0F, new Dilation(0.0F))
+                .uv(12, 0).cuboid(0.0F, -9.0F, -3.0F, 1.0F, 1.0F, 5.0F, new Dilation(0.0F))
+                .uv(17, 7).cuboid(0.0F, -7.0F, -8.0F, 1.0F, 2.0F, 2.0F, new Dilation(0.0F))
+                .uv(1, 1).cuboid(0.0F, -6.0F, -6.0F, 1.0F, 1.0F, 1.0F, new Dilation(0.0F))
+                .uv(1, 1).cuboid(0.0F, -6.0F, -9.0F, 1.0F, 2.0F, 1.0F, new Dilation(0.0F))
+                .uv(0, 0).cuboid(0.0F, -6.0F, 1.0F, 1.0F, 1.0F, 6.0F, new Dilation(0.0F))
+                .uv(0, 0).cuboid(0.0F, -7.0F, 6.0F, 1.0F, 1.0F, 2.0F, new Dilation(0.0F)), ModelTransform.origin(-1.0F, 7.0F, -1.0F));
 
-        ModelPartData stick = modelPartData.addChild("stick", ModelPartBuilder.create().uv(28, 11).cuboid(-1.0F, -22.0F, 3.0F, 1.0F, 20.0F, 1.0F, new Dilation(0.0F))
-                .uv(8, 3).cuboid(-1.0F, -27.0F, 3.0F, 1.0F, 2.0F, 1.0F, new Dilation(0.0F)), ModelTransform.origin(0.0F, 24.0F, 0.0F));
+        ModelPartData stick = modelPartData.addChild("stick", ModelPartBuilder.create().uv(28, 11).cuboid(0.0F, -5.0F, 4.0F, 1.0F, 20.0F, 1.0F, new Dilation(0.0F))
+                .uv(8, 3).cuboid(0.0F, -10.0F, 4.0F, 1.0F, 2.0F, 1.0F, new Dilation(0.0F)), ModelTransform.origin(-1.0F, 7.0F, -1.0F));
 
-        ModelPartData crystals = modelPartData.addChild("crystals", ModelPartBuilder.create().uv(24, 5).cuboid(-1.5F, -2.0F, 2.5F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
-                .uv(19, 0).cuboid(-1.5F, -17.0F, 2.5F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.origin(0.0F, 24.0F, 0.0F));
+        ModelPartData crystals = modelPartData.addChild("crystals", ModelPartBuilder.create().uv(24, 5).cuboid(-0.5F, 15.0F, 3.5F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
+                .uv(19, 0).cuboid(-0.5F, 0.0F, 3.5F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.origin(-1.0F, 7.0F, -1.0F));
         return TexturedModelData.of(modelData, 32, 32);
     }
     @Override

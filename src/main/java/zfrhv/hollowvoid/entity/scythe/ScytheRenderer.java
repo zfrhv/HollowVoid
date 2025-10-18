@@ -11,6 +11,7 @@ import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.state.CameraRenderState;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 import zfrhv.hollowvoid.HollowVoid;
 
@@ -41,7 +42,7 @@ public class ScytheRenderer extends EntityRenderer<ScytheEntity, ScytheRenderSta
         scytheRenderState.pitch = scytheEntity.getLerpedPitch(f);
         scytheRenderState.rotation = scytheEntity.getRenderingRotation();
         scytheRenderState.enchanted = scytheEntity.isEnchanted();
-        scytheRenderState.isGrounded = scytheEntity.isOnGround();
+        scytheRenderState.isGrounded = scytheEntity.isInGround();
     }
 
     public void render(
@@ -51,8 +52,16 @@ public class ScytheRenderer extends EntityRenderer<ScytheEntity, ScytheRenderSta
             CameraRenderState cameraRenderState
     ) {
         matrixStack.push();
+
         matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(scytheRenderState.yaw - 90.0F));
         matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(scytheRenderState.pitch + 90.0F));
+        if (!scytheRenderState.isGrounded) {
+            matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(scytheRenderState.rotation * 20f + 270));
+        } else {
+            matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(300));
+        }
+        // TODO when spawning entity spawn it a bit lower and not from players face
+
         List<RenderLayer> list = ItemRenderer.getGlintRenderLayers(this.model.getLayer(TEXTURE), false, scytheRenderState.enchanted);
 
         for (int i = 0; i < list.size(); i++) {
@@ -70,8 +79,6 @@ public class ScytheRenderer extends EntityRenderer<ScytheEntity, ScytheRenderSta
                             null
                     );
         }
-
-        // TODO add spin while flying + correction when ladded, pass entity infro through render state (need custom render state) video time 17:50
 
         matrixStack.pop();
         super.render(scytheRenderState, matrixStack, orderedRenderCommandQueue, cameraRenderState);
