@@ -9,7 +9,7 @@ import zfrhv.hollowvoid.block.ModBlocks;
 import zfrhv.hollowvoid.effects.ModEffects;
 import zfrhv.hollowvoid.entity.ModEntities;
 import zfrhv.hollowvoid.item.ModItems;
-import zfrhv.hollowvoid.item.ShadeCloak;
+import zfrhv.hollowvoid.item.ShadeCloak.ShadeCloak;
 import zfrhv.hollowvoid.world.ModDimension;
 
 public class HollowVoid implements ModInitializer {

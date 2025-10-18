@@ -1,6 +1,8 @@
 package zfrhv.hollowvoid;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
@@ -12,7 +14,9 @@ import zfrhv.hollowvoid.entity.scythe.ScytheModel;
 import zfrhv.hollowvoid.entity.scythe.ScytheRenderer;
 import zfrhv.hollowvoid.entity.void_fox.VoidFoxModel;
 import zfrhv.hollowvoid.entity.void_fox.VoidFoxRenderer;
+import zfrhv.hollowvoid.item.ShadeCloak.SendClientMovement;
 
+@Environment(EnvType.CLIENT)
 public class HollowVoidClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
@@ -24,5 +28,7 @@ public class HollowVoidClient implements ClientModInitializer {
 
         EntityModelLayerRegistry.registerModelLayer(ScytheModel.SCYTHE_LAYER, ScytheModel::getTexturedModelData);
         EntityRendererRegistry.register(ModEntities.SCYTHE, ScytheRenderer::new);
+
+        SendClientMovement.register();
     }
 }

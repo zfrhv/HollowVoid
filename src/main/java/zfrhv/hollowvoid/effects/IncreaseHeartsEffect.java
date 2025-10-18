@@ -15,10 +15,4 @@ public class IncreaseHeartsEffect extends StatusEffect {
         // Its only client side animation
         return false;
     }
-
-    // Called when the effect is applied.
-    @Override
-    public boolean applyUpdateEffect(ServerWorld world, LivingEntity entity, int amplifier) {
-        return super.applyUpdateEffect(world, entity, amplifier);
-    }
 }

@@ -14,6 +14,9 @@ public class ModEffects implements ModInitializer {
     public static final RegistryEntry<StatusEffect> INCREASE_HEARTS =
             Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(HollowVoid.MOD_ID, "increase_hearts"), new IncreaseHeartsEffect());
 
+    public static final RegistryEntry<StatusEffect> STEP_HEIGHT =
+            Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(HollowVoid.MOD_ID, "step_height"), new StepHighEffect());
+
     @Override
     public void onInitialize() {
 

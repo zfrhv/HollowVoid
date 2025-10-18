@@ -21,9 +21,9 @@
 		"fabric-datagen": [
 			"zfrhv.hollowvoid.HollowVoidDataGenerator"
 		],
-      "client": [
-        "zfrhv.hollowvoid.HollowVoidClient"
-      ]
+        "client": [
+          "zfrhv.hollowvoid.HollowVoidClient"
+        ]
     },
 	"mixins": [
 		"hollowvoid.mixins.json"
