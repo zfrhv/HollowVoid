@@ -36,6 +36,7 @@ public class VoidFoxEntity extends DialogueEntity {
         super.name = Text.literal("[Void Fox]").formatted(Formatting.BLUE);
         addBasicOption("Hello1", "You can take my scythe in the attic, i dont need it anyways");
         addBasicOption("Hello2", "Who allowed you to steal peoples scythes? youre lucky i dont need it... you can keep it.");
+        System.out.println("loading new void fox");
     }
 
     @Override

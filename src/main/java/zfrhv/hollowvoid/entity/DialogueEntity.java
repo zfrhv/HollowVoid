@@ -34,8 +34,7 @@ public class DialogueEntity extends MobEntity  {
             List<EntitySpeechOption> unlockedSpeeches = new ArrayList<>();
             for (int i = 0; i < options.size(); i++) {
                 EntitySpeechOption option = options.get(i);
-                System.out.println(player.getEntityWorld().isClient());
-                // i get client twice instead of client + server?
+                System.out.println(option.status);
                 if (option.status == EntitySpeechOption.Status.UNLOCKED) {
                     option.index = i;
                     unlockedSpeeches.add(option);
@@ -52,8 +51,11 @@ public class DialogueEntity extends MobEntity  {
     protected void writeCustomData(WriteView view) {
         super.writeCustomData(view);
         view.putInt("SpeechCount", options.size());
+        System.out.println("size iS: ");
+        System.out.println(options.size());
         for (int i = 0; i < options.size(); i++) {
             EntitySpeechOption option = options.get(i);
+            System.out.println(option.status);
             view.putString("speech_option_"+i+"_question", option.question);
             view.putString("speech_option_"+i+"_answer", option.answer);
             view.putInt("speech_option_"+i+"_status", option.status.ordinal());
@@ -98,6 +100,7 @@ public class DialogueEntity extends MobEntity  {
             options.add(new EntitySpeechOption(question, answer, unlocked ? EntitySpeechOption.Status.UNLOCKED : EntitySpeechOption.Status.LOCKED) {
                 @Override
                 public void onChosen() {
+                    System.out.println("marking client complete");
                     super.onChosen();
                 }
             });
@@ -105,6 +108,7 @@ public class DialogueEntity extends MobEntity  {
             options.add(new EntitySpeechOption(question, answer, unlocked ? EntitySpeechOption.Status.UNLOCKED : EntitySpeechOption.Status.LOCKED) {
                 @Override
                 public void onChosen() {
+                    System.out.println("marking server complete");
                     super.onChosen();
                     answerQuestion(answer);
                 }
