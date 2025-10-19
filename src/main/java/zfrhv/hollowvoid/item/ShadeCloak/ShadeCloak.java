@@ -10,10 +10,13 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 import zfrhv.hollowvoid.effects.ModEffects;
 import zfrhv.hollowvoid.item.ModItems;
+import zfrhv.hollowvoid.sound.ModSounds;
 
 public class ShadeCloak {
     public static final Identifier SPRINT_SPEED_MODIFIER = Identifier.of("hollowvoid", "sprint_speed_modfier");
@@ -36,6 +39,19 @@ public class ShadeCloak {
                             player.addStatusEffect(new StatusEffectInstance(
                                     ModEffects.STEP_HEIGHT, 6, 0, false, false, false
                             ));
+                            ServerWorld world = player.getEntityWorld();
+                            float pitch = 1.0F + (world.random.nextFloat() - world.random.nextFloat()) * 0.2F;
+                            world.playSound(
+                                    null,
+                                    player.getX(),
+                                    player.getY(),
+                                    player.getZ(),
+                                    ModSounds.DASH,
+                                    SoundCategory.PLAYERS,
+                                    2F,
+                                    pitch
+                            );
+                            player.playSound(ModSounds.DASH);
                             // TODO play sound effect
                             // TODO make it work with horse as well via 1.21.11 update
                         }

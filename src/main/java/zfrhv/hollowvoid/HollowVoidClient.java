@@ -6,6 +6,12 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.fabric.impl.resource.loader.BuiltinModResourcePackSource;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.resource.server.ServerResourcePackManager;
+import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import zfrhv.hollowvoid.client.render.DecayingHeartsRenderer;
 import zfrhv.hollowvoid.client.render.FormingHeartsRenderer;
@@ -30,5 +36,11 @@ public class HollowVoidClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.SCYTHE, ScytheRenderer::new);
 
         SendClientMovement.register();
+
+        ResourceManagerHelper.registerBuiltinResourcePack(
+                Identifier.of("hollowvoid", "better_lanterns"),
+                FabricLoader.getInstance().getModContainer("hollowvoid").get(),
+                ResourcePackActivationType.DEFAULT_ENABLED
+        );
     }
 }

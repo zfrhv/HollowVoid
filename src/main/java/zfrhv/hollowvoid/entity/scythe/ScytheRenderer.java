@@ -10,6 +10,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.state.CameraRenderState;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
@@ -19,16 +20,13 @@ import java.util.List;
 
 @Environment(EnvType.CLIENT)
 public class ScytheRenderer extends EntityRenderer<ScytheEntity, ScytheRenderState> {
-    private static final Identifier TEXTURE = Identifier.of(HollowVoid.MOD_ID, "textures/entity/scythe_model.png");
+    public Identifier TEXTURE = Identifier.of(HollowVoid.MOD_ID, "textures/entity/void_scythe_model.png");
+
     protected ScytheModel model;
 
     public ScytheRenderer(EntityRendererFactory.Context context) {
         super(context);
         this.model = new ScytheModel(context.getPart(ScytheModel.SCYTHE_LAYER));
-    }
-
-    public Identifier getTexture(ScytheRenderState state) {
-        return TEXTURE;
     }
 
     @Override
@@ -60,7 +58,6 @@ public class ScytheRenderer extends EntityRenderer<ScytheEntity, ScytheRenderSta
         } else {
             matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(300));
         }
-        // TODO when spawning entity spawn it a bit lower and not from players face
 
         List<RenderLayer> list = ItemRenderer.getGlintRenderLayers(this.model.getLayer(TEXTURE), false, scytheRenderState.enchanted);
 
