@@ -1,10 +1,12 @@
 // 1.21.10	-999999999-01-01T00:00:00	HollowVoid/FabricDocsReference Model Provider
 5d1aa6eb1220a8951e02aaebe1fc4cb9982cf503 assets/hollowvoid/blockstates/skulls_block.json
 718cab649e1a7fb7795a4473fc56368a992897f1 assets/hollowvoid/blockstates/void_deepslate.json
+417ef6a74acd1af370624d649e82dfd900c6c109 assets/hollowvoid/blockstates/void_dripstone.json
 95343bec306369c832ec3839b6f9bd9f448ee918 assets/hollowvoid/blockstates/void_soil.json
 ad90808bff2eefa5b0f4959c3efcffd29e944492 assets/hollowvoid/items/shade_cloak.json
 a67a603df2addda4df5b8d5b5c7e556ee14d670d assets/hollowvoid/items/skulls_block.json
 b3a2cf48da7842ea67df90752050c21008f824f0 assets/hollowvoid/items/void_deepslate.json
+cfb7541a03e799a4608af6fbcf90785f89eadadf assets/hollowvoid/items/void_dripstone.json
 3fb9a1baaa96558afa936e53a7cd5f852fcbe115 assets/hollowvoid/items/void_scythe_1.json
 ed97be3ef850ffc0a1998a25513f5f739eef4c9c assets/hollowvoid/items/void_scythe_2.json
 ae411e5b8cdb358a9ccd9f670c28a14fb2011fe1 assets/hollowvoid/items/void_scythe_3.json
@@ -12,6 +14,7 @@ ae411e5b8cdb358a9ccd9f670c28a14fb2011fe1 assets/hollowvoid/items/void_scythe_3.j
 d8d1c4d3230b028429ed9d9290affae007b67981 assets/hollowvoid/items/void_stick.json
 e11e0f6048b7468dcce687618fa23543de5562d2 assets/hollowvoid/models/block/skulls_block.json
 fdb76839433a1d71b838a5b941083ca27e465f1b assets/hollowvoid/models/block/void_deepslate.json
+a63d8aa4112eee5cf3d38ceb2788f32d927b6e44 assets/hollowvoid/models/block/void_dripstone.json
 c0fb7367ddb167568397562aaab834d960bc5ad1 assets/hollowvoid/models/block/void_soil.json
 5bd0c7cb8defa7139e40b6295c030b7a13b1c86e assets/hollowvoid/models/item/shade_cloak.json
 916114d00f14596f2027c890d94cd75a97aaa649 assets/hollowvoid/models/item/void_scythe_1.json

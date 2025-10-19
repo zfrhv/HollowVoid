@@ -26,17 +26,21 @@ import zfrhv.hollowvoid.client.render.DialogueScreen;
 import zfrhv.hollowvoid.entity.DialogueEntity;
 import zfrhv.hollowvoid.entity.EntitySpeechOption;
 
+import java.util.List;
+
 public class VoidFoxEntity extends DialogueEntity {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
 
     public VoidFoxEntity(EntityType<? extends VoidFoxEntity> entityType, World world) {
         super(entityType, world);
-
         super.name = Text.literal("[Void Fox]").formatted(Formatting.BLUE);
-        addBasicOption("Hello1", "You can take my scythe in the attic, i dont need it anyways");
-        addBasicOption("Hello2", "Who allowed you to steal peoples scythes? youre lucky i dont need it... you can keep it.");
-        System.out.println("loading new void fox");
+        super.options = List.of(
+                createBasicOption("Hello1",
+                        "You can take my scythe in the attic, i dont need it anyways"),
+                createBasicOption("Hello2",
+                        "Who allowed you to steal peoples scythes? youre lucky i dont need it... you can keep it.")
+        );
     }
 
     @Override

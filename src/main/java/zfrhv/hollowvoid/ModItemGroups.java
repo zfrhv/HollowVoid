@@ -29,6 +29,7 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.hollowvoid.void_blocks"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModBlocks.VOID_SOIL);
+                        entries.add(ModBlocks.VOID_DRIPSTONE);
                         entries.add(ModBlocks.VOID_DEEPSLATE);
                         entries.add(ModBlocks.SKULLS_BLOCK);
                     })

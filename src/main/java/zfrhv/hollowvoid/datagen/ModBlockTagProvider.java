@@ -18,6 +18,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.VOID_SOIL);
         valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(ModBlocks.VOID_DRIPSTONE);
+        valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.VOID_DEEPSLATE);
         valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.SKULLS_BLOCK);

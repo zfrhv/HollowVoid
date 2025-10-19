@@ -21,6 +21,12 @@ public class ModBlocks {
             AbstractBlock.Settings.create().strength(2f).sounds(BlockSoundGroup.GRAVEL),
             true
     );
+    public static final Block VOID_DRIPSTONE = register(
+            "void_dripstone",
+            Block::new,
+            AbstractBlock.Settings.create().strength(2f).sounds(BlockSoundGroup.DRIPSTONE_BLOCK),
+            true
+    );
     public static final Block VOID_DEEPSLATE = register(
             "void_deepslate",
             Block::new,
