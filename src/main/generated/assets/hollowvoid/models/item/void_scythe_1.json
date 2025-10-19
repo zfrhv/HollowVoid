@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "hollowvoid:item/void_scythe_1"
+  }
+}
