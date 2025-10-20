@@ -2,16 +2,20 @@ package zfrhv.hollowvoid.entity.void_fox;
 
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import zfrhv.hollowvoid.entity.DialogueEntity;
+import zfrhv.hollowvoid.entity.ModEntities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +29,16 @@ public class VoidFoxEntity extends DialogueEntity {
         super.name = Text.literal("[Void Fox]").formatted(Formatting.BLUE);
 
         super.addQuestionStatus(QuestionStatus.UNLOCKED);
-        super.questions.add("Hello1");
-        super.answers.add("You can take my scythe in the attic, i dont need it anyways");
+        super.questions.add("What is this place?");
+        super.answers.add("The void dimension.. You can take my scythe in the attic, i dont need it anyways");
 
         super.addQuestionStatus(QuestionStatus.UNLOCKED);
         super.questions.add("Hello2");
         super.answers.add("Who allowed you to steal peoples scythes? youre lucky i dont need it... you can keep it.");
+
+        super.addQuestionStatus(QuestionStatus.LOCKED);
+        super.questions.add("How are you alive?");
+        super.answers.add("I can respawn just like you.. Why did you killed me? it wasn't nice.");
     }
 
     @Override
@@ -43,6 +51,28 @@ public class VoidFoxEntity extends DialogueEntity {
         // for monsters i can steal zombie logic, they have attack goal
         // can also add attributes like max health
 
+    }
+
+    @Override
+    public void onDeath(DamageSource damageSource) {
+        super.onDeath(damageSource);
+
+        if (!this.getEntityWorld().isClient()) {
+            ServerWorld serverWorld = (ServerWorld) this.getEntityWorld();
+            // TODO:
+            //  delay death respawn by 5 sec
+            //  make him respawn near bed
+            //  make cool animation and sounds
+            VoidFoxEntity mob = ModEntities.VOID_FOX.create(serverWorld, SpawnReason.REINFORCEMENT);
+            if (mob != null) {
+                mob.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
+                mob.setQuestionStatuses(this.getQuestionStatuses());
+                if (mob.getQuestionStatus(2) == QuestionStatus.LOCKED) {
+                    mob.setQuestionStatus(2, QuestionStatus.UNLOCKED);
+                }
+                serverWorld.spawnEntity(mob);
+            }
+        }
     }
 
     public static DefaultAttributeContainer.Builder createAttributes() {

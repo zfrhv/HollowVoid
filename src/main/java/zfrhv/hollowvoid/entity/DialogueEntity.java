@@ -59,6 +59,14 @@ public class DialogueEntity extends MobEntity  {
         this.dataTracker.set(QUESTIONS_STATUSES, sb.toString());
     }
 
+    public String getQuestionStatuses() {
+        return this.dataTracker.get(QUESTIONS_STATUSES);
+    }
+
+    public void setQuestionStatuses(String questionStatuses) {
+        this.dataTracker.set(QUESTIONS_STATUSES, questionStatuses);
+    }
+
     public void addQuestionStatus(QuestionStatus questionStatus) {
         this.dataTracker.set(QUESTIONS_STATUSES, this.dataTracker.get(QUESTIONS_STATUSES) + (char) questionStatus.ordinal());
     }
