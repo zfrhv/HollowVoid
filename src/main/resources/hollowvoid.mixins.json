@@ -9,6 +9,7 @@
         "SleepingChatScreenMixin",
         "weather/WeatherRenderStateMixin",
         "weather/VoidstormWeatherMixin",
+        "weather/WorldRendererMixin",
         "ItemSettingsMixin"
 	],
 	"injectors": {

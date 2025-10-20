@@ -3,6 +3,10 @@
     {
       "structure": "hollowvoid:void_hut_1",
       "weight": 1
+    },
+    {
+      "structure": "hollowvoid:void_hut_2",
+      "weight": 1
     }
   ],
   "placement": {
