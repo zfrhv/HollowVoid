@@ -1,31 +1,19 @@
 package zfrhv.hollowvoid.entity.void_fox;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.DeathScreen;
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import zfrhv.hollowvoid.client.render.DialogueScreen;
 import zfrhv.hollowvoid.entity.DialogueEntity;
-import zfrhv.hollowvoid.entity.EntitySpeechOption;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VoidFoxEntity extends DialogueEntity {
@@ -35,12 +23,14 @@ public class VoidFoxEntity extends DialogueEntity {
     public VoidFoxEntity(EntityType<? extends VoidFoxEntity> entityType, World world) {
         super(entityType, world);
         super.name = Text.literal("[Void Fox]").formatted(Formatting.BLUE);
-        super.options = List.of(
-                createBasicOption("Hello1",
-                        "You can take my scythe in the attic, i dont need it anyways"),
-                createBasicOption("Hello2",
-                        "Who allowed you to steal peoples scythes? youre lucky i dont need it... you can keep it.")
-        );
+
+        super.addQuestionStatus(QuestionStatus.UNLOCKED);
+        super.questions.add("Hello1");
+        super.answers.add("You can take my scythe in the attic, i dont need it anyways");
+
+        super.addQuestionStatus(QuestionStatus.UNLOCKED);
+        super.questions.add("Hello2");
+        super.answers.add("Who allowed you to steal peoples scythes? youre lucky i dont need it... you can keep it.");
     }
 
     @Override
@@ -69,5 +59,6 @@ public class VoidFoxEntity extends DialogueEntity {
         this.idleAnimationState.startIfNotRunning(this.age);
     }
 
+    // for interaction like giving quest items or ore to upgrade:
 //    private ActionResult interactWithItem(PlayerEntity player, Hand hand) {
 }

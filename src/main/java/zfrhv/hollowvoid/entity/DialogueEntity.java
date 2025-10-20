@@ -4,6 +4,9 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.storage.ReadView;
@@ -21,27 +24,65 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DialogueEntity extends MobEntity  {
+    public static enum QuestionStatus {
+        LOCKED,
+        UNLOCKED,
+        IMPORTANT_MISSION,
+        COMPLETE
+    }
     public Text name = Text.literal("[Unnamed]");
-    public List<EntitySpeechOption> options = new ArrayList<>();
+    private static final TrackedData<String> QUESTIONS_STATUSES = DataTracker.registerData(DialogueEntity.class, TrackedDataHandlerRegistry.STRING);
+    public List<String> questions;
+    public List<String> answers;
 
     protected DialogueEntity(EntityType<? extends MobEntity> entityType, World world) {
         super(entityType, world);
+        this.dataTracker.set(QUESTIONS_STATUSES, "");
+        this.questions = new ArrayList<>();
+        this.answers = new ArrayList<>();
+    }
+
+    @Override
+    protected void initDataTracker(DataTracker.Builder builder) {
+        super.initDataTracker(builder);
+        builder.add(QUESTIONS_STATUSES, "");
+    }
+
+    public QuestionStatus getQuestionStatus(int index) {
+        String statuses = this.dataTracker.get(QUESTIONS_STATUSES);
+        return QuestionStatus.values()[statuses.charAt(index)];
+    }
+
+    public void setQuestionStatus(int index, QuestionStatus questionStatus) {
+        StringBuilder sb = new StringBuilder(this.dataTracker.get(QUESTIONS_STATUSES));
+        sb.setCharAt(index, (char)questionStatus.ordinal());
+        this.dataTracker.set(QUESTIONS_STATUSES, sb.toString());
+    }
+
+    public void addQuestionStatus(QuestionStatus questionStatus) {
+        this.dataTracker.set(QUESTIONS_STATUSES, this.dataTracker.get(QUESTIONS_STATUSES) + (char) questionStatus.ordinal());
+    }
+
+    public void choseQuestion(int index) {
+        if (getQuestionStatus(index) == QuestionStatus.UNLOCKED) {
+            setQuestionStatus(index, QuestionStatus.COMPLETE);
+        }
+        answerQuestion(answers.get(index));
     }
 
     @Override
     protected ActionResult interactMob(PlayerEntity player, Hand hand) {
         if (this.getEntityWorld().isClient()) {
-            List<EntitySpeechOption> unlockedSpeeches = new ArrayList<>();
-            for (int i = 0; i < options.size(); i++) {
-                EntitySpeechOption option = options.get(i);
-                System.out.println("client2: "+this.getEntityWorld().isClient());
-                System.out.println(option.status);
-                if (option.status == EntitySpeechOption.Status.UNLOCKED) {
-                    option.index = i;
-                    unlockedSpeeches.add(option);
+            List<String> askableQuestions = new ArrayList<>();
+            List<Integer> questionsIndexes = new ArrayList<>();
+            for (int i = 0; i < questions.size(); i++) {
+                QuestionStatus questionStatus = getQuestionStatus(i);
+                if (questionStatus == QuestionStatus.UNLOCKED || questionStatus == QuestionStatus.IMPORTANT_MISSION) {
+                    askableQuestions.add(questions.get(i));
+                    questionsIndexes.add(i);
                 }
             }
-            MinecraftClient.getInstance().setScreen(new DialogueScreen(this.getId(), name, unlockedSpeeches.toArray(new EntitySpeechOption[0])));
+            MinecraftClient.getInstance().setScreen(new DialogueScreen(this.getId(), name, askableQuestions, questionsIndexes));
 
 
         }
@@ -51,23 +92,13 @@ public class DialogueEntity extends MobEntity  {
     @Override
     protected void writeCustomData(WriteView view) {
         super.writeCustomData(view);
-        view.putInt("SpeechCount", options.size());
-        for (int i = 0; i < options.size(); i++) {
-            System.out.println("client: "+this.getEntityWorld().isClient());
-            System.out.println(options.get(i).status);
-            view.putInt("speech_option_"+i+"_status", options.get(i).status.ordinal());
-        }
+        view.putString("questions_statuses", this.dataTracker.get(QUESTIONS_STATUSES));
     }
 
     @Override
     protected void readCustomData(ReadView view) {
-        System.out.println("READINGGGGGGGGGGGGGGGGGGGGGGG");
         super.readCustomData(view);
-        int speechCount = view.getInt("SpeechCount", 0);
-        for (int i = 0; i < speechCount; i++) {
-            options.get(i).status = EntitySpeechOption.Status.values()[view.getInt("speech_option_"+i+"_status", 0)];
-            System.out.println(options.get(i).status);
-        }
+        this.dataTracker.set(QUESTIONS_STATUSES, view.getString("questions_statuses", this.dataTracker.get(QUESTIONS_STATUSES)));
     }
 
     public void sendNpcMessage(PlayerEntity player, String message) {
@@ -84,19 +115,5 @@ public class DialogueEntity extends MobEntity  {
                 sendNpcMessage(player, answer);
             }
         }
-    }
-
-    public EntitySpeechOption createBasicOption(String question, String answer) {
-        return createBasicOption(question, answer, true);
-    }
-
-    public EntitySpeechOption createBasicOption(String question, String answer, Boolean unlocked) {
-        return new EntitySpeechOption(question, answer, unlocked ? EntitySpeechOption.Status.UNLOCKED : EntitySpeechOption.Status.LOCKED) {
-            @Override
-            public void onChosen() {
-                super.onChosen();
-                answerQuestion(answer);
-            }
-        };
     }
 }

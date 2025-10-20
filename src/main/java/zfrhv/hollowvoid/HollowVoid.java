@@ -55,9 +55,7 @@ public class HollowVoid implements ModInitializer {
         ServerPlayNetworking.registerGlobalReceiver(DialogueRequestPayload.ID, (payload, context) -> {
             Entity entity = context.player().getEntityWorld().getEntityById(payload.mobId());
             if (entity instanceof DialogueEntity dialogueEntity) {
-                dialogueEntity.options.get(payload.option_index()).onChosen();
-                // TODO specifying only server on displaying message doesnt work?
-                // and its not saving my choices
+                dialogueEntity.choseQuestion(payload.question_index());
             }
         });
     }
