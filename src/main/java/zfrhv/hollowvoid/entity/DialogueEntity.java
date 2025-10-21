@@ -81,20 +81,23 @@ public class DialogueEntity extends MobEntity  {
     @Override
     protected ActionResult interactMob(PlayerEntity player, Hand hand) {
         if (this.getEntityWorld().isClient()) {
-            List<String> askableQuestions = new ArrayList<>();
-            List<Integer> questionsIndexes = new ArrayList<>();
-            for (int i = 0; i < questions.size(); i++) {
-                QuestionStatus questionStatus = getQuestionStatus(i);
-                if (questionStatus == QuestionStatus.UNLOCKED || questionStatus == QuestionStatus.IMPORTANT_MISSION) {
-                    askableQuestions.add(questions.get(i));
-                    questionsIndexes.add(i);
-                }
-            }
-            MinecraftClient.getInstance().setScreen(new DialogueScreen(this.getId(), name, askableQuestions, questionsIndexes));
-
-
+            openDialogue();
         }
         return ActionResult.SUCCESS;
+    }
+
+    @Environment(EnvType.CLIENT)
+    protected void openDialogue() {
+        List<String> askableQuestions = new ArrayList<>();
+        List<Integer> questionsIndexes = new ArrayList<>();
+        for (int i = 0; i < questions.size(); i++) {
+            QuestionStatus questionStatus = getQuestionStatus(i);
+            if (questionStatus == QuestionStatus.UNLOCKED || questionStatus == QuestionStatus.IMPORTANT_MISSION) {
+                askableQuestions.add(questions.get(i));
+                questionsIndexes.add(i);
+            }
+        }
+        MinecraftClient.getInstance().setScreen(new DialogueScreen(this.getId(), name, askableQuestions, questionsIndexes));
     }
 
     @Override

@@ -35,7 +35,7 @@ public class ShadeCloak {
                             player.addVelocity(movement3d);
                             player.velocityModified = true;
                             player.getItemCooldownManager().set(cloak, 15);
-                            player.getHungerManager().add(-1, 0.0F);
+                            player.getHungerManager().addExhaustion(4);
                             player.addStatusEffect(new StatusEffectInstance(
                                     ModEffects.STEP_HEIGHT, 6, 0, false, false, false
                             ));

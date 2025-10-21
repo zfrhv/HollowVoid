@@ -3,15 +3,17 @@
 	"package": "zfrhv.hollowvoid.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-        "sweep_attack/SweepAttackParticleFactoryMixin",
-        "sweep_attack/SweepAttackParticleMixin",
         "sweep_attack/PlayerEntityMixin",
-        "SleepingChatScreenMixin",
-        "weather/WeatherRenderStateMixin",
-        "weather/VoidstormWeatherMixin",
-        "weather/WorldRendererMixin",
         "ItemSettingsMixin"
 	],
+    "client": [
+      "sweep_attack/SweepAttackParticleFactoryMixin",
+      "sweep_attack/SweepAttackParticleMixin",
+      "weather/WeatherRenderStateMixin",
+      "weather/VoidstormWeatherMixin",
+      "weather/WorldRendererMixin",
+      "SleepingChatScreenMixin"
+    ],
 	"injectors": {
 		"defaultRequire": 1
 	},
