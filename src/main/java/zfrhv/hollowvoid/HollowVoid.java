@@ -55,7 +55,7 @@ public class HollowVoid implements ModInitializer {
         ServerPlayNetworking.registerGlobalReceiver(DialogueRequestPayload.ID, (payload, context) -> {
             Entity entity = context.player().getEntityWorld().getEntityById(payload.mobId());
             if (entity instanceof DialogueEntity dialogueEntity) {
-                dialogueEntity.choseQuestion(payload.question_index());
+                dialogueEntity.choseQuestion(context.player(), payload.question_index());
             }
         });
     }

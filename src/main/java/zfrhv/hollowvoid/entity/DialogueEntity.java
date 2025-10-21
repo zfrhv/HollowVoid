@@ -71,11 +71,11 @@ public class DialogueEntity extends MobEntity  {
         this.dataTracker.set(QUESTIONS_STATUSES, this.dataTracker.get(QUESTIONS_STATUSES) + (char) questionStatus.ordinal());
     }
 
-    public void choseQuestion(int index) {
+    public void choseQuestion(PlayerEntity player, int index) {
         if (getQuestionStatus(index) == QuestionStatus.UNLOCKED) {
             setQuestionStatus(index, QuestionStatus.COMPLETE);
         }
-        answerQuestion(answers.get(index));
+        answerQuestion(player, questions.get(index), answers.get(index));
     }
 
     @Override
@@ -117,18 +117,21 @@ public class DialogueEntity extends MobEntity  {
         this.dataTracker.set(QUESTIONS_STATUSES, loaded_statuses);
     }
 
-    public void sendNpcMessage(PlayerEntity player, String message) {
-        MutableText text = Text.literal("[Void Fox]").formatted(Formatting.BLUE).append(Text.literal(": "+message).formatted(Formatting.WHITE));
+    public void sendMessage(PlayerEntity player, Text name, String message) {
+        MutableText text = name.copy().append(Text.literal(": "+message).formatted(Formatting.WHITE));
         player.sendMessage(text, false);
     }
 
-    public void answerQuestion(String answer) {
+    public void answerQuestion(PlayerEntity curiousPlayer, String question, String answer) {
         World world = this.getEntityWorld();
         Vec3d pos = this.getEntityPos();
 
-        for (PlayerEntity player : world.getPlayers()) {
-            if (player.squaredDistanceTo(pos) <= 10 * 10) { // radius 10
-                sendNpcMessage(player, answer);
+        for (PlayerEntity anyPlayer : world.getPlayers()) {
+            if (anyPlayer.squaredDistanceTo(pos) <= 10 * 10) { // radius 10
+                if (anyPlayer != curiousPlayer) {
+                    sendMessage(anyPlayer, curiousPlayer.getName() , question);
+                }
+                sendMessage(anyPlayer, this.name, answer);
             }
         }
     }
