@@ -28,6 +28,11 @@ public class VoidFoxEntity extends DialogueEntity {
         super(entityType, world);
         super.name = Text.literal("[Void Fox]").formatted(Formatting.BLUE);
 
+        // IMPORTANT: the dialogues are managed by their indexes, so if one wants to remove some dialogue, put it
+        // QuestionStatus.LOCKED and never trigger it (may leave question + answer empty).
+        // Because removing it from array will shift their statuses and break already stored data.
+        // When fully removing one of them the dialogue may crash, thus only on big version updates when people will have to reset world.
+
         super.addQuestionStatus(QuestionStatus.UNLOCKED);
         super.questions.add("What is this place?");
         super.answers.add("The void dimension.. You can take my scythe in the attic, i dont need it anyways");
@@ -58,19 +63,21 @@ public class VoidFoxEntity extends DialogueEntity {
         super.onDeath(damageSource);
 
         if (!this.getEntityWorld().isClient()) {
-            ServerWorld serverWorld = (ServerWorld) this.getEntityWorld();
-            // TODO:
-            //  delay death respawn by 5 sec
-            //  make him respawn near bed
-            //  make cool animation and sounds
-            VoidFoxEntity mob = ModEntities.VOID_FOX.create(serverWorld, SpawnReason.REINFORCEMENT);
-            if (mob != null) {
-                mob.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
-                mob.setQuestionStatuses(this.getQuestionStatuses());
-                if (mob.getQuestionStatus(2) == QuestionStatus.LOCKED) {
-                    mob.setQuestionStatus(2, QuestionStatus.UNLOCKED);
+            if (!damageSource.getName().equals("genericKill")) { // if not killed by command respawn
+                ServerWorld serverWorld = (ServerWorld) this.getEntityWorld();
+                // TODO:
+                //  delay death respawn by 5 sec
+                //  make him respawn near bed
+                //  make cool animation and sounds
+                VoidFoxEntity mob = ModEntities.VOID_FOX.create(serverWorld, SpawnReason.REINFORCEMENT);
+                if (mob != null) {
+                    mob.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
+                    mob.setQuestionStatuses(this.getQuestionStatuses());
+                    if (mob.getQuestionStatus(2) == QuestionStatus.LOCKED) {
+                        mob.setQuestionStatus(2, QuestionStatus.UNLOCKED);
+                    }
+                    serverWorld.spawnEntity(mob);
                 }
-                serverWorld.spawnEntity(mob);
             }
         }
     }

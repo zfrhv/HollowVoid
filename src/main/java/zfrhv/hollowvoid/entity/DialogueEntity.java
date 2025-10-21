@@ -106,7 +106,12 @@ public class DialogueEntity extends MobEntity  {
     @Override
     protected void readCustomData(ReadView view) {
         super.readCustomData(view);
-        this.dataTracker.set(QUESTIONS_STATUSES, view.getString("questions_statuses", this.dataTracker.get(QUESTIONS_STATUSES)));
+        String current_statuses = this.dataTracker.get(QUESTIONS_STATUSES);
+        String loaded_statuses = view.getString("questions_statuses", current_statuses);
+        if (current_statuses.length() > loaded_statuses.length()) { // if added new dialogues add them to statuses "array"
+            loaded_statuses = loaded_statuses + current_statuses.substring(loaded_statuses.length());
+        }
+        this.dataTracker.set(QUESTIONS_STATUSES, loaded_statuses);
     }
 
     public void sendNpcMessage(PlayerEntity player, String message) {
