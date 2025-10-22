@@ -118,6 +118,8 @@ public class DialogueEntity extends MobEntity  {
     }
 
     public void sendMessage(PlayerEntity player, Text name, String message) {
+        message = message.replace("{player}", player.getName().getString());
+
         MutableText text = name.copy().append(Text.literal(": "+message).formatted(Formatting.WHITE));
         player.sendMessage(text, false);
     }

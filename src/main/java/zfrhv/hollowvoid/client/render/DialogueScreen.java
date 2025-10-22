@@ -43,11 +43,20 @@ public class DialogueScreen extends Screen {
                         MinecraftClient.getInstance().player.closeScreen();
                     }
                 }
-
             });
 
             y += 13;
         }
+
+        this.addDrawableChild(new ClickableTextWidget(x, y, Text.literal("Never mind")) {
+            @Override
+            public void onRelease(Click click) {
+                if (isMouseOver(click.x(), click.y())) {
+                    MinecraftClient.getInstance().player.closeScreen();
+                }
+            }
+
+        });
     }
 
     @Override

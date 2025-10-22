@@ -17,9 +17,6 @@ import net.minecraft.world.World;
 import zfrhv.hollowvoid.entity.DialogueEntity;
 import zfrhv.hollowvoid.entity.ModEntities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class VoidFoxEntity extends DialogueEntity {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
@@ -34,21 +31,42 @@ public class VoidFoxEntity extends DialogueEntity {
         // When fully removing one of them the dialogue may crash, thus only on big version updates when people will have to reset world.
 
         super.addQuestionStatus(QuestionStatus.UNLOCKED);
-        super.questions.add("What is this place?");
-        super.answers.add("The void dimension.. You can take my scythe in the attic, i dont need it anyways");
+        super.questions.add("Hello?");
+        super.answers.add("Welcome {player}, to my humble hut!");
 
-        super.addQuestionStatus(QuestionStatus.UNLOCKED);
-        super.questions.add("Hello2");
-        super.answers.add("Who allowed you to steal peoples scythes? youre lucky i dont need it... you can keep it.");
+        super.addQuestionStatus(QuestionStatus.LOCKED);
+        super.questions.add("How did you know my name?");
+        super.answers.add("Its written above your head.");
+
+        super.addQuestionStatus(QuestionStatus.LOCKED);
+        super.questions.add("How did you get wood in this dimension?");
+        super.answers.add("My little friends brought it, stick by stick... The only thing that keeps us warm in here.");
 
         super.addQuestionStatus(QuestionStatus.LOCKED);
         super.questions.add("How are you alive?");
         super.answers.add("I can respawn just like you.. Why did you killed me? it wasn't nice.");
+
+
+
+//        super.addQuestionStatus(QuestionStatus.UNLOCKED);
+//        super.questions.add("What is this place?");
+//        super.answers.add("The void dimension.. You can take my scythe in the attic, i dont need it anyways");
+    }
+
+    @Override
+    public void choseQuestion(PlayerEntity player, int index) {
+        super.choseQuestion(player, index);
+        switch (index){
+            case 0:
+                this.setQuestionStatus(1, QuestionStatus.UNLOCKED);
+                this.setQuestionStatus(2, QuestionStatus.UNLOCKED);
+                break;
+        }
     }
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(2, new LookAtEntityGoal(this, PlayerEntity.class, 4f));
+        this.goalSelector.add(1, new LookAtEntityGoal(this, PlayerEntity.class, 4f));
         this.goalSelector.add(2, new LookAroundGoal(this));
 
         // TODO
@@ -73,8 +91,8 @@ public class VoidFoxEntity extends DialogueEntity {
                 if (mob != null) {
                     mob.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
                     mob.setQuestionStatuses(this.getQuestionStatuses());
-                    if (mob.getQuestionStatus(2) == QuestionStatus.LOCKED) {
-                        mob.setQuestionStatus(2, QuestionStatus.UNLOCKED);
+                    if (mob.getQuestionStatus(3) == QuestionStatus.LOCKED) {
+                        mob.setQuestionStatus(3, QuestionStatus.UNLOCKED);
                     }
                     serverWorld.spawnEntity(mob);
                 }
