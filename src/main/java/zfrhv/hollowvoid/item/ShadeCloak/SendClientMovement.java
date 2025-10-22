@@ -33,6 +33,7 @@ public class SendClientMovement {
                     if (client.player.getHungerManager().getFoodLevel() > 0) {
                         if (!client.player.getItemCooldownManager().isCoolingDown(cloak)) {
                             Vec3d movement3d = new Vec3d(movement.x, 0.2, movement.y);
+//                            Vec3d movement3d = new Vec3d(movement.x, 0, movement.y);
                             float yaw = client.player.getYaw();
                             movement3d = movement3d.rotateY(- yaw * (float) (Math.PI / 180.0));
                             ClientPlayNetworking.send(new DashRequestPayload(movement3d));

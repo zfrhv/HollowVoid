@@ -20,7 +20,7 @@ public class VoidArmorMaterials {
     public static final RegistryKey<EquipmentAsset> VOIDARMOR_VISUALS = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(HollowVoid.MOD_ID, "void"));
 
     public static final ArmorMaterial SHADE_CLOAK_MATERIAL = new ArmorMaterial(
-            0, // durability
+            100, // durability
             Map.of(
                     EquipmentType.HELMET, 0,
                     EquipmentType.CHESTPLATE, 0,
