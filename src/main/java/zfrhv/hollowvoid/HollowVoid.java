@@ -7,7 +7,10 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
+import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,12 +38,12 @@ public class HollowVoid implements ModInitializer {
         ModBlocks.initialize();
         ModSounds.register();
 
-//        CustomPortalBuilder.beginPortal()
-//                .frameBlock(Blocks.DIRT)
-//                .lightWithItem(Items.FEATHER)
-//                .destDimID(Identifier.of(HollowVoid.MOD_ID, "voiddim"))
-//                .tintColor(0xc76efa)
-//                .registerPortal();
+        CustomPortalBuilder.beginPortal()
+                .frameBlock(Blocks.BLACKSTONE)
+                .lightWithItem(Items.BONE)
+                .destDimID(Identifier.of(HollowVoid.MOD_ID, "voiddim"))
+                .tintColor(0x00008B)
+                .registerPortal();
 
         ShadeCloak.register();
         ModBedSleeping.register();
