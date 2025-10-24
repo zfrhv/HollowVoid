@@ -4,6 +4,8 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.goal.LookAroundGoal;
+import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -40,6 +42,18 @@ public class DialogueEntity extends MobEntity  {
         this.dataTracker.set(QUESTIONS_STATUSES, "");
         this.questions = new ArrayList<>();
         this.answers = new ArrayList<>();
+    }
+
+    @Override
+    protected void initGoals() {
+        this.goalSelector.add(1, new LookAtEntityGoal(this, PlayerEntity.class, 4f));
+        this.goalSelector.add(5, new LookAroundGoal(this));
+
+        // TODO
+        // maybe sleep goal priority 0, and smithing goal?
+        // for monsters i can steal zombie logic, they have attack goal
+        // can also add attributes like max health
+
     }
 
     @Override

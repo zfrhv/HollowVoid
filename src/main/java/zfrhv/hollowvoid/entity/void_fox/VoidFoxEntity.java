@@ -46,6 +46,9 @@ public class VoidFoxEntity extends DialogueEntity {
         super.questions.add("How are you alive?");
         super.answers.add("I can respawn just like you.. Why did you killed me? it wasn't nice.");
 
+        super.addQuestionStatus(QuestionStatus.LOCKED);
+        super.questions.add("How can you enchant when the table is on the ceiling?");
+        super.answers.add("I don't actually need the spell book, I have memorized the spells. It's enough to have the enchantment table nearby and read the spells out loud.");
 
 
 //        super.addQuestionStatus(QuestionStatus.UNLOCKED);
@@ -61,19 +64,10 @@ public class VoidFoxEntity extends DialogueEntity {
                 this.setQuestionStatus(1, QuestionStatus.UNLOCKED);
                 this.setQuestionStatus(2, QuestionStatus.UNLOCKED);
                 break;
+            case 2:
+                this.setQuestionStatus(4, QuestionStatus.UNLOCKED);
+                break;
         }
-    }
-
-    @Override
-    protected void initGoals() {
-        this.goalSelector.add(1, new LookAtEntityGoal(this, PlayerEntity.class, 4f));
-        this.goalSelector.add(2, new LookAroundGoal(this));
-
-        // TODO
-        // maybe sleep goal priority 0, and smithing goal?
-        // for monsters i can steal zombie logic, they have attack goal
-        // can also add attributes like max health
-
     }
 
     @Override

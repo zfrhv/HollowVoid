@@ -3,11 +3,9 @@
     {
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
-        "location": "hollowvoid:void_village/street",
-        "processors": {
-          "processors": []
-        },
-        "projection": "terrain_matching"
+        "location": "hollowvoid:void_village/nitter_house",
+        "processors": [],
+        "projection": "rigid"
       },
       "weight": 1
     }
