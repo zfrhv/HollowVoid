@@ -4,9 +4,7 @@
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
         "location": "hollowvoid:void_village/street_1",
-        "processors": {
-          "processors": []
-        },
+        "processors": [],
         "projection": "terrain_matching"
       },
       "weight": 1

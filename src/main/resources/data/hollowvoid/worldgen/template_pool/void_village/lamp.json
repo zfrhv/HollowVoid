@@ -4,9 +4,7 @@
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
         "location": "hollowvoid:void_village/lamp",
-        "processors": {
-          "processors": []
-        },
+        "processors": [],
         "projection": "rigid"
       },
       "weight": 1
