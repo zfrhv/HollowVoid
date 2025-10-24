@@ -4,7 +4,8 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
         "sweep_attack/PlayerEntityMixin",
-        "ItemSettingsMixin"
+        "ItemSettingsMixin",
+        "StructurePoolGeneratorMixin"
 	],
     "client": [
       "sweep_attack/SweepAttackParticleFactoryMixin",
