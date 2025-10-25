@@ -97,20 +97,20 @@
         "type": "minecraft:spider",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 100
+        "weight": 10
       },
       {
         "type": "minecraft:creeper",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 100
+        "weight": 10
       }
     ],
     "water_ambient": [],
     "water_creature": [
       {
         "type": "minecraft:pufferfish",
-        "weight": 100,
+        "weight": 10,
         "minCount": 4,
         "maxCount": 4
       }
