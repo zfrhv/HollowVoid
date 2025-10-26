@@ -18,13 +18,11 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerRandomHorizontalRotations(
-                TexturedModel.CUBE_ALL,
-                ModBlocks.VOID_SOIL
-        );
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VOID_DRIPSTONE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VOID_DEEPSLATE);
+        blockStateModelGenerator.registerRandomHorizontalRotations(TexturedModel.CUBE_ALL, ModBlocks.VOID_SOIL);
+        blockStateModelGenerator.registerRandomHorizontalRotations(TexturedModel.CUBE_ALL, ModBlocks.VOID_DRIPSTONE);
+        blockStateModelGenerator.registerRandomHorizontalRotations(TexturedModel.CUBE_ALL, ModBlocks.VOID_DEEPSLATE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SKULLS_BLOCK);
+        blockStateModelGenerator.registerRandomHorizontalRotations(TexturedModel.CUBE_ALL, ModBlocks.VOID_GRANIT);
     }
 
 

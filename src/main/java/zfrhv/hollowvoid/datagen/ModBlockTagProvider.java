@@ -23,5 +23,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.VOID_DEEPSLATE);
         valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.SKULLS_BLOCK);
+        valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(ModBlocks.VOID_GRANIT);
     }
 }

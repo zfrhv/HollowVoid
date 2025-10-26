@@ -1,13 +1,13 @@
 {
   "placement": {
     "type": "minecraft:random_spread",
-    "salt": 10387312,
-    "separation": 20,
-    "spacing": 25
+    "salt": 14357921,
+    "separation": 1,
+    "spacing": 2
   },
   "structures": [
     {
-      "structure": "hollowvoid:void_village",
+      "structure": "hollowvoid:void_fossil",
       "weight": 1
     }
   ]

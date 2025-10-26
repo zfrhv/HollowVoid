@@ -32,6 +32,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.VOID_DRIPSTONE);
                         entries.add(ModBlocks.VOID_DEEPSLATE);
                         entries.add(ModBlocks.SKULLS_BLOCK);
+                        entries.add(ModBlocks.VOID_GRANIT);
                     })
                     .build());
 

@@ -19,7 +19,7 @@
           }
         },
         {
-          "biome": "minecraft:plains",
+          "biome": "hollowvoid:void_death",
           "parameters": {
             "temperature": 0.15,
             "humidity": 0,

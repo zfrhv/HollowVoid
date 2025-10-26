@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "hollowvoid:block/void_deepslate"
-    }
+    "": [
+      {
+        "model": "hollowvoid:block/void_deepslate"
+      },
+      {
+        "model": "hollowvoid:block/void_deepslate",
+        "y": 90
+      },
+      {
+        "model": "hollowvoid:block/void_deepslate",
+        "y": 180
+      },
+      {
+        "model": "hollowvoid:block/void_deepslate",
+        "y": 270
+      }
+    ]
   }
 }

@@ -39,6 +39,12 @@ public class ModBlocks {
             AbstractBlock.Settings.create().strength(3f).sounds(BlockSoundGroup.BONE),
             true
     );
+    public static final Block VOID_GRANIT = register(
+            "void_granit",
+            Block::new,
+            AbstractBlock.Settings.create().strength(2f).sounds(BlockSoundGroup.GRAVEL),
+            true
+    );
 
     private static Block register(String name, Function<AbstractBlock.Settings, Block> blockFactory, AbstractBlock.Settings settings, boolean shouldRegisterItem) {
         // Create a registry key for the block
