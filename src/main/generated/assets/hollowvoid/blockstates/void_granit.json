@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "hollowvoid:block/void_granit"
+      },
+      {
+        "model": "hollowvoid:block/void_granit",
+        "y": 90
+      },
+      {
+        "model": "hollowvoid:block/void_granit",
+        "y": 180
+      },
+      {
+        "model": "hollowvoid:block/void_granit",
+        "y": 270
+      }
+    ]
+  }
+}

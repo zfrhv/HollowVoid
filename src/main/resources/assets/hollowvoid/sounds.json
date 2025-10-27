@@ -4,5 +4,17 @@
     "sounds": [
       "hollowvoid:dash"
     ]
+  },
+  "wind_inside": {
+    "subtitle": "sounds.hollowvoid.wind_inside",
+    "sounds": [
+      "hollowvoid:wind_inside"
+    ]
+  },
+  "wind_outside": {
+    "subtitle": "sounds.hollowvoid.wind_outside",
+    "sounds": [
+      "hollowvoid:wind_outside"
+    ]
   }
 }

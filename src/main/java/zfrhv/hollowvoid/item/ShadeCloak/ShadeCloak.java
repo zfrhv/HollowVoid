@@ -68,7 +68,6 @@ public class ShadeCloak {
                                     2F,
                                     pitch
                             );
-                            player.playSound(ModSounds.DASH);
 
                             // TODO make it work with horse as well via 1.21.11 update
                             // TODO add particles and make player invisible

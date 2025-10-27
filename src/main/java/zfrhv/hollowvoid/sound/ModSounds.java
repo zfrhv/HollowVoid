@@ -8,6 +8,8 @@ import zfrhv.hollowvoid.HollowVoid;
 
 public class ModSounds {
     public static final SoundEvent DASH = registerSoundEvent("dash");
+    public static final SoundEvent WIND_OUTSIDE = registerSoundEvent("wind_outside");
+    public static final SoundEvent WIND_INSIDE = registerSoundEvent("wind_inside");
 
     private static SoundEvent registerSoundEvent(String name) {
         Identifier id = Identifier.of(HollowVoid.MOD_ID, name);
