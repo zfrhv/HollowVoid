@@ -65,7 +65,7 @@ public class ShadeCloak {
                                     player.getZ(),
                                     ModSounds.DASH,
                                     SoundCategory.PLAYERS,
-                                    2F,
+                                    1F,
                                     pitch
                             );
 
